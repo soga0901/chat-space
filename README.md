@@ -11,7 +11,7 @@
 | password |string(NOT NULL)  |
 
   #### Association
-    has_many :user_groups
+    has_many :group_users
     has_many :groups, :through => :user_groups
     has_many :messages
 
@@ -24,18 +24,18 @@
 | name     | string(NOT NULL)  |
 
   #### Association
-    has_many :user_groups
+    has_many :group_users
     has_many :users, :through => :user_groups
     has_many :messages
 
 
-  ### user_groups
+  ### group_users
 
-| column   | type              |
-|:---------|:------------------|
-| id       | integer(NOT NULL) |
-| group_id | integer(NOT NULL) |
-| user_id  | integer(NOT NULL) |
+| column   | type                                 |
+|:---------|:-------------------------------------|
+| id       | integer(NOT NULL)                    |
+| group_id | references :group, foreign_key: true |
+| user_id  | references :user, foreign_key: true  |
 
   #### Association
     belongs_to :group
@@ -45,13 +45,13 @@
 
   ### messages
 
-| column   | type             |
-|:---------|:-----------------|
-| id       |integer(NOT NULL) |
-| body     |text(NOT NULL)    |
-| image    |text              |
-| group_id |integer(NOT NULL) |
-| user_id  |integer(NOT NULL) |
+| column   | type                                |
+|:---------|:------------------------------------|
+| id       |integer(NOT NULL)                    |
+| body     |text(NOT NULL)                       |
+| image    |text                                 |
+| group_id |references :group, foreign_key: true |
+| user_id  |references :user, foreign_key: true  |
 
   #### Association
     belongs_to :group
