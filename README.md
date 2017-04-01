@@ -3,39 +3,41 @@
 
   ### users
 
-| columns  | type             |
+| column   | type             |
 |:---------|:-----------------|
 | id       |integer(NOT NULL) |
 | name     |string(NOT NULL)  |
 | email    |text(NOT NULL)    |
 | password |string(NOT NULL)  |
 
-  #### Relation
-    has_many :menbers
+  #### Association
+    has_many :user_groups
+    has_many :groups, :through => :user_groups
     has_many :messages
 
 
   ### groups
 
-| columns  | type              |
+| column   | type              |
 |:---------|:------------------|
 | id       | integer(NOT NULL) |
 | name     | string(NOT NULL)  |
 
-  #### Relation
-    has_many :menbers
+  #### Association
+    has_many :user_groups
+    has_many :users, :through => :user_groups
     has_many :messages
 
 
-  ### Menbers
+  ### user_groups
 
-| columns  | type              |
+| column   | type              |
 |:---------|:------------------|
 | id       | integer(NOT NULL) |
 | group_id | integer(NOT NULL) |
 | user_id  | integer(NOT NULL) |
 
-  #### Relation
+  #### Association
     belongs_to :group
     belongs_to :user
 
@@ -43,7 +45,7 @@
 
   ### messages
 
-| columns  | type             |
+| column   | type             |
 |:---------|:-----------------|
 | id       |integer(NOT NULL) |
 | body     |text(NOT NULL)    |
@@ -51,7 +53,7 @@
 | group_id |integer(NOT NULL) |
 | user_id  |integer(NOT NULL) |
 
-  #### Relation
+  #### Association
     belongs_to :group
     belongs_to :user
 
