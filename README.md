@@ -1,24 +1,17 @@
 # README
+  ## Database
+      | users                      | groups                   | members                     | messages                    |
+      |:---------------------------|-------------------------:|:---------------------------:|:---------------------------:|
+      | id :integer(NOT NULL)      | id :integer              | id :integer(NOT NULL)       | id :integer(NOT NULL)       |
+      | name :string(NOT NULL)     | name :string(NOT NULL)   | group_id :integer(NOT NULL) | body :text(NOT NULL)        |
+      | email :text(NOT NULL)      |                          | user_id :integer (NOT NULL) | image :text                 |
+      | password :string(NOT NULL) |                          |                             | group_id :integer(NOT NULL) |
+      |                            |                          |                             | user_id :integer(NOT NULL)  |
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+  ### Relation
+     users has_many :members, messages
+     members belongs_to :user, group
+     messages belongs_to :group, user
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  ### Index
+     add_index :messages, [:body, :image]
