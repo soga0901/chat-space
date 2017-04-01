@@ -58,7 +58,6 @@
     belongs_to :user
 
 
-  #### Index
-    add_index :messages, [:body, :image]
-
-
+  ### Index
+    add_index :users, :name
+    add_index :groups, :name
