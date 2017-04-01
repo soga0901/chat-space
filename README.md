@@ -3,7 +3,7 @@
 
   ### users
 
-| culumns  | type             |
+| columns  | type             |
 |:---------|:-----------------|
 | id       |integer(NOT NULL) |
 | name     |string(NOT NULL)  |
@@ -17,7 +17,7 @@
 
   ### groups
 
-| culumns  | type              |
+| columns  | type              |
 |:---------|:------------------|
 | id       | integer(NOT NULL) |
 | name     | string(NOT NULL)  |
@@ -29,7 +29,7 @@
 
   ### Menbers
 
-| culumns  | type              |
+| columns  | type              |
 |:---------|:------------------|
 | id       | integer(NOT NULL) |
 | group_id | integer(NOT NULL) |
@@ -43,8 +43,8 @@
 
   ### messages
 
-| culumns  | type             |
-|:----------------------------|
+| columns  | type             |
+|:---------|:-----------------|
 | id       |integer(NOT NULL) |
 | body     |text(NOT NULL)    |
 | image    |text              |
