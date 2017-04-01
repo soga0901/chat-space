@@ -41,6 +41,8 @@
     belongs_to :group
     belongs_to :user
 
+  #### Index
+    add_index :group_users, [:group_id, :user_id]
 
 
   ### messages
@@ -57,7 +59,5 @@
     belongs_to :group
     belongs_to :user
 
-
-  ### Index
-    add_index :users, :id
-    add_index :groups, :id
+  #### Index
+    add_index :messages, [:group_id, :user_id]
