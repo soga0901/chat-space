@@ -59,5 +59,5 @@
 
 
   ### Index
-    add_index :users, :name
-    add_index :groups, :name
+    add_index :users, :id
+    add_index :groups, :id
