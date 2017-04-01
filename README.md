@@ -4,14 +4,16 @@
   ### users
 
 | culumns  | type             |
-|:----------------------------|
+|:---------|:-----------------|
 | id       |integer(NOT NULL) |
 | name     |string(NOT NULL)  |
 | email    |text(NOT NULL)    |
 | password |string(NOT NULL)  |
 
-    #### Relation
-      has_many :members, messages
+  #### Relation
+    has_many :menbers
+    has_many :messages
+
 
   ### groups
 
@@ -19,6 +21,10 @@
 |:---------|:------------------|
 | id       | integer(NOT NULL) |
 | name     | string(NOT NULL)  |
+
+  #### Relation
+    has_many :menbers
+    has_many :messages
 
 
   ### Menbers
@@ -29,8 +35,9 @@
 | group_id | integer(NOT NULL) |
 | user_id  | integer(NOT NULL) |
 
-    #### Relation
-      :members, messages
+  #### Relation
+    belongs_to :group
+    belongs_to :user
 
 
 
@@ -44,10 +51,12 @@
 | group_id |integer(NOT NULL) |
 | user_id  |integer(NOT NULL) |
 
-    #### Relation
-      messages belongs_to :group, user
+  #### Relation
+    belongs_to :group
+    belongs_to :user
 
-    #### Index
-     add_index :messages, [:body, :image]
+
+  #### Index
+    add_index :messages, [:body, :image]
 
 
