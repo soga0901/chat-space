@@ -1,5 +1,6 @@
 # README
   ## Database
+
       | users                      | groups                   | members                     | messages                    |
       |:---------------------------|:-------------------------|:----------------------------|:----------------------------|
       | id :integer(NOT NULL)      | id :integer              | id :integer(NOT NULL)       | id :integer(NOT NULL)       |
