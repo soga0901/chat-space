@@ -23,11 +23,11 @@
           %p.chat__room__message まだメッセージはありません。
     .chat
       .chat__heading
-        %h2.chat__name
+        %h2.chat__heading__name
           sampleグループ
         .edit__btn
-          %a.btn__link{href: ""} Edit
-        %p.chat__member member: soga
+          %a.edit__btn__link{href: ""} Edit
+        %p.chat__heading__member member: soga
       .chat__messages
         .message
           %h3.message__user__name soga
@@ -45,4 +45,4 @@
         %form
           %textarea.chat__input__area{placeholder: "type a text"}
           %i.fa.fa-photo
-          %input.chat__sent__btn{type: "submit", value: "Send"}/
+          %input.chat__input__send__btn{type: "submit", value: "Send"}/
