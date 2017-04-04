@@ -1,0 +1,150 @@
+html, body {
+   height: 100%;
+}
+
+header {
+  background-color: #38AEF0;
+  height: 25px;
+  width: 100%;
+  h2 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: #fff;
+    text-align: center;
+  }
+}
+
+
+.container {
+  height: 100%;
+  .left-bar {
+    width: 300px;
+    min-height: 100%;
+    background-color: #2f3e51;
+    color: #ffffff;
+    float:left;
+    &__user {
+      background-color: #253141;
+      height: 100px;
+      padding: 0 20px;
+      .user__name {
+        font-size: 16px;
+        font-weight: bold;
+        padding: 39px 0;
+        display: inline-block;
+      }
+      .setting__btn {
+        float: right;
+        padding: 39px 0;
+      }
+
+    }
+    .chat__list {
+      padding: 40px 20px 0 20px;
+      .chat__room__name {
+        font-size: 15px;
+        }
+      .chat__room__message {
+        font-size: 11px;
+      }
+    }
+  }
+
+
+    .chat {
+      min-height: 100%;
+      width: calc(100vw - 300px);
+      float:left;
+      &__heading {
+        border-bottom:solid 1px #EEEEEE;
+        height: 99px;
+        background-color: #fff;
+        padding: 0 40px;
+        &__name {
+          padding: 35px 0 15px;
+          font-size: 20px;
+          float: left;
+        }
+        .edit__btn {
+          margin-top: 28px;
+          padding: 7px 20px;
+          float: right;
+          border: solid 1px #38AEF0;
+          &__link {
+            font-size: 16px;
+            color: #38AEF0;
+            text-decoration: none;
+          }
+        }
+        &__member {
+          font-size: 12px;
+          color: #999999;
+          clear: both;
+        }
+      }
+
+      &__messages {
+        height: calc(100vh - 236px);
+        background-color: gray;
+        padding: 46px 40px 0;
+        background-color: #f5f5f5;
+        .message {
+          display: inline-block;
+          width: 100%;
+          &__user__name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #434A54;
+            display: inline-block;
+            padding: 0 10px 10px 0;
+          }
+          &__date {
+            font-size: 12px;
+            color: #999999;
+            display: inline-block;
+          }
+          &__text {
+            font-size: 14px;
+            color: #434A54;
+            clear: both;
+            padding-bottom: 40px;
+          }
+        }
+      }
+      &__input {
+        background-color: #DDDDDD;
+        height: 50px;
+        padding: 20px 40px;
+          &__area {
+            resize: none;
+            height: 50px;
+            font-size: 16px;
+            line-height: 50px;
+            float: left;
+            border: none;
+            width: calc(100vw - 513px);
+            padding-left: 10px;
+          }
+          .fa-photo {
+            float: left;
+            background-color: #fff;
+            padding: 17px 10px;
+          }
+          &__send__btn {
+            float: right;
+            background-color: #38AEF0;
+            font-size: 16px;
+            margin-left: 15px;
+            color: #fff;
+            height: 50px;
+            padding: 0 10px;
+            width: 70px;
+            border: none;
+          }
+      }
+    }
+  }
