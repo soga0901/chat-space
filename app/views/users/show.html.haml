@@ -1,0 +1,48 @@
+%body
+  %header
+    　
+    %h2 チャットグループが作成されました。
+  .container
+    .left-bar
+      .left-bar__user
+        %h2.user__name soga
+        .setting__btn
+          %i.fa.fa-pencil-square-o
+          %i.fa.fa-gear
+      .chat__lists
+        .chat__list
+          %h3.chat__room__name sampleグループ
+          %p.chat__room__message こんばんは
+      .chat__lists
+        .chat__list
+          %h3.chat__room__name sampleグループ02
+          %p.chat__room__message まだメッセージはありません。
+      .chat__lists
+        .chat__list
+          %h3.chat__room__name sampleグループ03
+          %p.chat__room__message まだメッセージはありません。
+    .chat
+      .chat__heading
+        %h2.chat__name
+          sampleグループ
+        .edit__btn
+          %a.btn__link{:href => ""} Edit
+        %p.chat__member member: soga
+      .chat__messages
+        .message
+          %h3.message__user__name soga
+          %h4.message__date 2017/04/03 20:00:00
+          %p.message__text こんばんは
+        .message
+          %h3.message__user__name soga
+          %h4.message__date 2017/04/03 13:00:00
+          %p.message__text こんにちは
+        .message
+          %h3.message__user__name soga
+          %h4.message__date 2017/04/03 09:00:00
+          %p.message__text おはよう
+      .chat__input
+        %form
+          %textarea.chat__input__area{:placeholder => "type a text"}
+          %i.fa.fa-photo
+          %input.chat__sent__btn{:type => "submit", :value => "Send"}/
