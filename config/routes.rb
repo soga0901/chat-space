@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get 'users/show' => 'users#show'
+  get 'messages/show' => 'messages#show'
 end
