@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/show' => 'users#show'
+  devise_for :users
+  resources 'messages', only: [:show]
 end
