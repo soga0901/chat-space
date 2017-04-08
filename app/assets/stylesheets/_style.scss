@@ -132,12 +132,15 @@ html, body {
     }
   }
 
- #notice {
-  @include noticeStyle;
+.flash {
+  text-align: center;
+  color: #fff;
+
+  &.notice {
+    background-color: #38AEF0;
+  }
+
+  &.alert {
+    background-color: #D65F4C;
+  }
 }
-
-#alert {
-  @include alertStyle;
-}
-
-
