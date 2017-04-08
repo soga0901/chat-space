@@ -132,15 +132,15 @@ html, body {
     }
   }
 
-.flash {
+.alert {
   text-align: center;
   color: #fff;
 
-  &.notice {
+  &.alert-info {
     background-color: #38AEF0;
   }
 
-  &.alert {
+  &.alert-danger {
     background-color: #D65F4C;
   }
 }
