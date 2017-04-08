@@ -2,23 +2,6 @@ html, body {
    height: 100%;
 }
 
-header {
-  background-color: #38AEF0;
-  height: 25px;
-  width: 100%;
-  h2 {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    color: #fff;
-    text-align: center;
-  }
-}
-
-
 .container {
   height: 100%;
   .left-bar {
@@ -148,3 +131,16 @@ header {
       }
     }
   }
+
+.alert {
+  text-align: center;
+  color: #fff;
+
+  &.alert-info {
+    background-color: #38AEF0;
+  }
+
+  &.alert-danger {
+    background-color: #D65F4C;
+  }
+}
