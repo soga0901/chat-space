@@ -1,11 +1,24 @@
 class GroupsController < ApplicationController
 
+  def new
+    @group = Group.new
+  end
+
   def create
-    Group.create(name: group_params[:name])
+    @group = Group.new(group_params)
+    if @group.save
+      redirect_to messages_url, notice: "グループが作成されました。"
+    else
+      flash[:alert] = "グループを作成できませんでした。"
+      render :new
+    end
+  end
+
+  def edit
   end
 
   private
   def group_params
-    params.permit(:name)
+    params.require(:group).permit(:name, { user_id: [] })
   end
 end
