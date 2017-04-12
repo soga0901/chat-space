@@ -26,7 +26,7 @@
         %h2.chat__heading__name
           = @group.name
         .edit__btn
-          = link_to "Edit", "edit", class: "edit__btn__link"
+          = link_to "Edit", edit_group_path(@group),  class: "edit__btn__link"
         %p.chat__heading__member
           member:
           - @group.group_users.each do |group_user|
