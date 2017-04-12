@@ -2,11 +2,13 @@
   .container
     .left-bar
       .left-bar__user
-        %h2.user__name soga
+        %h2.user__name
+          soga
         .setting__btn
           = link_to new_group_path do
             %i.fa.fa-pencil-square-o
-          %i.fa.fa-gear
+          = link_to edit_user_registration_path do
+            %i.fa.fa-gear
       .chat__lists
         .chat__list
           %h3.chat__room__name sampleグループ
@@ -22,10 +24,13 @@
     .chat
       .chat__heading
         %h2.chat__heading__name
-          sampleグループ
+          = @group.name
         .edit__btn
-          %a.edit__btn__link{href: ""} Edit
-        %p.chat__heading__member member: soga
+          = link_to "Edit", edit_group_path(@group),  class: "edit__btn__link"
+        %p.chat__heading__member
+          member:
+          - @group.group_users.each do |group_user|
+            = group_user.user.name
       .chat__messages
         .message
           %h3.message__user__name soga
