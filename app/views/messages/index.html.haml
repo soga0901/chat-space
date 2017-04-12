@@ -4,7 +4,8 @@
       .left-bar__user
         %h2.user__name soga
         .setting__btn
-          %i.fa.fa-pencil-square-o
+          = link_to new_group_path do
+            %i.fa.fa-pencil-square-o
           %i.fa.fa-gear
       .chat__lists
         .chat__list
