@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to group_messages_url, notice: "メッセージの送信が完了しました。"
     else
-      flash[:alert] = "メッセージを入力してください。"
+      flash.now[:alert] = "メッセージを入力してください。"
       render :index
     end
   end
