@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
       redirect_to action: :index
       flash[:notice] = "メッセージの送信が完了しました。"
     else
-      flash[:alert] = "メッセージの送信に失敗しました。"
+      flash[:alert] = "メッセージを入力してください。"
       render :index
     end
   end
