@@ -5,9 +5,10 @@ class MessagesController < ApplicationController
   end
 
   def create
+    @group = Group.find(params[:group_id])
     @message = Message.new(body: message_params[:body], image: message_params[:image], group_id: params[:group_id],user_id: current_user.id)
     if @message.save
-      render :index
+      redirect_to action: :index
       flash[:notice] = "メッセージの送信が完了しました"
     else
       reder :index
