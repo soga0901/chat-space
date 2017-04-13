@@ -45,7 +45,7 @@
           %h4.message__date 2017/04/03 09:00:00
           %p.message__text おはよう
       .chat__input
-        = form_for(@message, url: group_messages_path) do |f|
+        = form_for( [ @group, @message] ) do |f|
           = f.text_field :body, placeholder: "type a text", class: "chat__input__area"
           %i.fa.fa-photo
           = f.submit "Send", class: "chat__input__send__btn"
