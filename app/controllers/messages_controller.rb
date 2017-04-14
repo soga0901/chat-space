@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   before_action :group_find
   def index
     @message = Message.new
+    @messages = @group.messages
   end
 
   def create
@@ -10,7 +11,7 @@ class MessagesController < ApplicationController
       redirect_to group_messages_url, notice: "メッセージの送信が完了しました。"
     else
       flash.now[:alert] = "メッセージを入力してください。"
-      render :index
+      render :show
     end
   end
 

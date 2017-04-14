@@ -33,17 +33,13 @@
             = group_user.user.name
       .chat__messages
         .message
-          %h3.message__user__name soga
-          %h4.message__date 2017/04/03 20:00:00
-          %p.message__text こんばんは
-        .message
-          %h3.message__user__name soga
-          %h4.message__date 2017/04/03 13:00:00
-          %p.message__text こんにちは
-        .message
-          %h3.message__user__name soga
-          %h4.message__date 2017/04/03 09:00:00
-          %p.message__text おはよう
+          - @messages.last(5).each do |message|
+            %h3.message__user__name
+              = message.user.name
+            %h4.message__date
+              = message.created_at
+            %p.message__text
+              = message.body
       .chat__input
         = form_for( [ @group, @message] ) do |f|
           = f.text_field :body, placeholder: "type a text", class: "chat__input__area"
