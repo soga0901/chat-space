@@ -2,25 +2,25 @@
   .container
     .left-bar
       .left-bar__user
-        %h2.user__name
-          soga
+        = link_to root_path, class: "link-btn"  do
+          %h2.user__name
+            = current_user.name
         .setting__btn
           = link_to new_group_path do
             %i.fa.fa-pencil-square-o
           = link_to edit_user_registration_path do
             %i.fa.fa-gear
       .chat__lists
-        .chat__list
-          %h3.chat__room__name sampleグループ
-          %p.chat__room__message こんばんは
-      .chat__lists
-        .chat__list
-          %h3.chat__room__name sampleグループ02
-          %p.chat__room__message まだメッセージはありません。
-      .chat__lists
-        .chat__list
-          %h3.chat__room__name sampleグループ03
-          %p.chat__room__message まだメッセージはありません。
+        - current_user.groups.each do |group|
+          = link_to group_messages_path(group), class: "link-btn" do
+            .chat__list
+              %h3.chat__room__name
+                = group.name
+              %p.chat__room__message
+                - if group.messages.length == 0
+                  まだメッセージがありません。
+                - else
+                  = group.messages.last(1)
     .chat
       .chat__heading
         %h2.chat__heading__name

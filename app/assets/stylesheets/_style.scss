@@ -29,6 +29,7 @@ html, body {
       }
     }
     .chat__list {
+      overflow: scroll;
       padding: 40px 20px 0 20px;
       .chat__room__name {
         font-size: 15px;
@@ -73,7 +74,7 @@ html, body {
       }
 
       &__messages {
-        overflow: scroll; 
+        overflow: scroll;
         height: calc(100vh - 236px);
         background-color: gray;
         padding: 46px 40px 0;
@@ -146,4 +147,9 @@ html, body {
   &.alert-danger {
     background-color: #D65F4C;
   }
+}
+
+.link-btn {
+  color: #ffffff;
+  text-decoration: none;
 }
