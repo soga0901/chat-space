@@ -1,4 +1,4 @@
-- current_user.groups.each do |group, messages|
+- current_user.groups.each do |group|
   = link_to group_messages_path(group), class: "link-btn" do
     .chat__list
       %h3.chat__room__name
@@ -6,5 +6,5 @@
       %p.chat__room__message
         - if group.messages.length == 0
           まだメッセージがありません。
-        - else
-          = group.messages
+        / - else
+        /   = group.messages
