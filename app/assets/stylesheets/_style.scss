@@ -73,6 +73,7 @@ html, body {
       }
 
       &__messages {
+        overflow: scroll; 
         height: calc(100vh - 236px);
         background-color: gray;
         padding: 46px 40px 0;
