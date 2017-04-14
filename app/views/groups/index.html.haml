@@ -11,13 +11,4 @@
           = link_to edit_user_registration_path do
             %i.fa.fa-gear
       .chat__lists
-        - current_user.groups.each do |group, messages|
-          = link_to group_messages_path(group), class: "link-btn" do
-            .chat__list
-              %h3.chat__room__name
-                = group.name
-              %p.chat__room__message
-                - if group.messages.length == 0
-                  まだメッセージがありません。
-                - else
-                  = group.messages.last(1)
+        = render partial: "layouts/group"
