@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_group, :set_messages, :move_to_sign_in
+  before_action :set_group, :set_messages, :authenticate_user!
   def index
     @message = Message.new
   end
@@ -26,10 +26,6 @@ class MessagesController < ApplicationController
 
   def set_messages
     @messages = @group.messages
-  end
-
-  def move_to_sign_in
-    redirect_to new_user_session_path unless user_signed_in?
   end
 
 end
