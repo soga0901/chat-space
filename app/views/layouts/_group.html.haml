@@ -6,5 +6,5 @@
       %p.chat__room__message
         - if group.messages.length == 0
           まだメッセージがありません。
-        / - else
-        /   = group.messages
+        - else
+          = group.last_message(group)

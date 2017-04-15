@@ -5,8 +5,8 @@ class Group < ApplicationRecord
   accepts_nested_attributes_for :users, allow_destroy: true
   validates :name, presence: true
 
-  def last_message
-    group.messages.body = group.messages[:body]
+  def last_message(group)
+    group.messages.last(1)
   end
 
 end
