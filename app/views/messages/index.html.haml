@@ -20,8 +20,8 @@
           = link_to "Edit", edit_group_path(@group),  class: "edit__btn__link"
         %p.chat__heading__member
           member:
-          - @group.group_users.each do |group_user|
-            = group_user.user.name
+          - @group.users.each do |user|
+            = user.name
       .chat__messages
         = render partial: "message"
       .chat__input
