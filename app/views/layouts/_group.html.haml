@@ -4,7 +4,4 @@
       %h3.chat__room__name
         = group.name
       %p.chat__room__message
-        - if group.messages.length == 0
-          まだメッセージがありません。
-        - else
-          = group.last_message(group)
+        = group.last_message
