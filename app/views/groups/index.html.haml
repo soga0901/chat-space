@@ -1,0 +1,14 @@
+%body
+  .container
+    .left-bar
+      .left-bar__user
+        = link_to root_path, class: "link-btn"  do
+          %h2.user__name
+            = current_user.name
+        .setting__btn
+          = link_to new_group_path do
+            %i.fa.fa-pencil-square-o
+          = link_to edit_user_registration_path do
+            %i.fa.fa-gear
+      .chat__lists
+        = render partial: "layouts/group"

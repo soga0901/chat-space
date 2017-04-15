@@ -2,25 +2,16 @@
   .container
     .left-bar
       .left-bar__user
-        %h2.user__name
-          soga
+        = link_to root_path, class: "link-btn"  do
+          %h2.user__name
+            = current_user.name
         .setting__btn
           = link_to new_group_path do
             %i.fa.fa-pencil-square-o
           = link_to edit_user_registration_path do
             %i.fa.fa-gear
       .chat__lists
-        .chat__list
-          %h3.chat__room__name sampleグループ
-          %p.chat__room__message こんばんは
-      .chat__lists
-        .chat__list
-          %h3.chat__room__name sampleグループ02
-          %p.chat__room__message まだメッセージはありません。
-      .chat__lists
-        .chat__list
-          %h3.chat__room__name sampleグループ03
-          %p.chat__room__message まだメッセージはありません。
+        = render partial: "layouts/group"
     .chat
       .chat__heading
         %h2.chat__heading__name
@@ -29,23 +20,12 @@
           = link_to "Edit", edit_group_path(@group),  class: "edit__btn__link"
         %p.chat__heading__member
           member:
-          - @group.group_users.each do |group_user|
-            = group_user.user.name
+          - @group.users.each do |user|
+            = user.name
       .chat__messages
-        .message
-          %h3.message__user__name soga
-          %h4.message__date 2017/04/03 20:00:00
-          %p.message__text こんばんは
-        .message
-          %h3.message__user__name soga
-          %h4.message__date 2017/04/03 13:00:00
-          %p.message__text こんにちは
-        .message
-          %h3.message__user__name soga
-          %h4.message__date 2017/04/03 09:00:00
-          %p.message__text おはよう
+        = render partial: "message"
       .chat__input
-        %form
-          %textarea.chat__input__area{placeholder: "type a text"}
+        = form_for( [ @group, @message] ) do |f|
+          = f.text_field :body, placeholder: "type a text", class: "chat__input__area"
           %i.fa.fa-photo
-          %input.chat__input__send__btn{type: "submit", value: "Send"}/
+          = f.submit "Send", class: "chat__input__send__btn"
