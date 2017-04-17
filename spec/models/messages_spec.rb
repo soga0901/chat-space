@@ -1,4 +1,7 @@
 require 'rails_helper'
+require 'faker'
+require 'Set'
+
 describe Message do
   describe '#create' do
     it "is valid with a body" do
