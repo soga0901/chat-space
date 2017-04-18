@@ -6,5 +6,4 @@ FactoryGirl.define do
     group_id Faker::Number.between(1, 10)
     user_id  Faker::Number.between(1, 10)
   end
-
 end
