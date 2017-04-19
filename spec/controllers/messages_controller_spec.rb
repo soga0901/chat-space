@@ -1,13 +1,11 @@
 require 'rails_helper'
-require 'faker'
-require 'Set'
 
 describe MessagesController do
   let(:group) { create(:group) }
   let(:user) { create(:user) }
   let(:message) { create(:message, group_id: group.id, user_id: user.id) }
-  let(:message_params){{body: message.body}}
-  let(:message_params_no_body){{ body: nil}}
+  let(:message_params){ { body: message.body } }
+  let(:message_params_no_body){ { body: nil } }
 
   describe 'GET #index' do
     before do
