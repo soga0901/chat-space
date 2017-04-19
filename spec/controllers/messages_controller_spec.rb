@@ -25,7 +25,7 @@ describe MessagesController do
       login_user user
     end
 
-    context 'IF @message.save' do
+    context 'IF @message can be saved' do
       before do
         post :create, params: { group_id: group, message: message_params }
       end
@@ -40,7 +40,7 @@ describe MessagesController do
 
     end
 
-    context 'ELSE' do
+    context 'IF @message cant be saved' do
       before do
         post :create, params: { group_id: group, message: message_params_no_body}
       end
