@@ -6,7 +6,7 @@ describe MessagesController do
   let(:group) { create(:group) }
   let(:user) { create(:user) }
   let(:message) { build(:message) }
-  let(:message_params){{ body: message.body}}
+  let(:message_params){{body: message.body, image: message.image}}
   let(:message_params_no_body){{ body: nil}}
 
   describe 'GET #index' do
@@ -18,6 +18,11 @@ describe MessagesController do
     it "assigns the requested group to @group" do
       expect(assigns(:group)).to eq group
     end
+
+    it "renders the :index template" do
+      expect(response).to render_template :index
+    end
+
   end
 
   describe 'POST #create' do
@@ -27,8 +32,12 @@ describe MessagesController do
 
     context 'IF @message can be saved' do
       before do
-        post :create, params: { group_id: group, message: message_params }
+        post :create, params: { id: message, group_id: group.id, user_id: user.id, message: message_params}
       end
+
+    it "assigns the requested message to @message" do
+      expect(assigns(:message)).to eq message
+    end
 
       it 'redirect to group_messages_path' do
         expect(response).to redirect_to group_messages_path(group)
