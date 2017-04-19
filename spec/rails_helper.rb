@@ -4,6 +4,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'devise'
+require File.expand_path("spec/support/controller_macros.rb")
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -17,4 +18,5 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
   config.include Devise::TestHelpers, type: :controller
+  config.include ControllerMacros, type: :controller
 end
