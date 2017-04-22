@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_group, :set_messages, :authenticate_user!
+  before_action :set_group, :set_messages, :set_current_user, :authenticate_user!
   def index
     @message = Message.new
   end
@@ -7,7 +7,10 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.new(message_params)
     if @message.save
-      redirect_to group_messages_path, notice: "メッセージの送信が完了しました。"
+      respond_to do |format|
+        format.html { redirect_to group_messages_path, notice: "メッセージの送信が完了しました。"}
+        format.json { render 'message' }
+      end
     else
       flash.now[:alert] = "メッセージを入力してください。"
       render :index
@@ -26,6 +29,10 @@ class MessagesController < ApplicationController
 
   def set_messages
     @messages = @group.messages
+  end
+
+  def set_current_user
+    @user = current_user
   end
 
 end
