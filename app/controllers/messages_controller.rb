@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
     if @message.save
       respond_to do |format|
         format.html { redirect_to group_messages_path, notice: "メッセージの送信が完了しました。"}
-        format.json { render 'message' }
+        format.json { render json: @message, handlers: 'jbuilder' }
       end
     else
       flash.now[:alert] = "メッセージを入力してください。"
