@@ -1,37 +1,33 @@
 $(function() {
-  function build_body(message) {
-    var body = $('<p class="message__text">').append(message.body);
-    return body;
+  function buildHTML(data) {
+    var html = $('<p class="message__text">').append(data.message.body);
+    return html;
   }
 
-  function build_time(message) {
-    var time = $('<h4 class="message__date">').append(message.created_at);
-    return time;
-  }
-
- $('.chat__input__send__btn').on('click', function(e) {
+  $('.chat__input__send__btn').on('click', function(e) {
     e.preventDefault();
     var textField = $('.chat__input__area');
     var message = textField.val();
+    var url = location.pathname;
+
     $.ajax({
       type: 'POST',
+      url: url,
+
       data: {
         message: {
-          body: message,
-          time: message
+        body: message
         }
       },
       dataType: 'json'
     })
 
     .done(function(data) {
-      var time = build_time(data);
-      $('.chat__messages').append(time);
-
-      var body = build_body(data);
-      $('.chat__messages').append(body);
+      var html = buildHTML(data);
+      $('.chat__messages').append(html);
       textField.val('');
     })
+
     .fail(function() {
       alert('error');
     });
