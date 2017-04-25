@@ -1,4 +1,5 @@
 $(function() {
+
   function buildHTML(data) {
     var user_name = $('<h3 class="message__user__name">').append(data.message.user_name);
 
@@ -29,9 +30,11 @@ $(function() {
       dataType: 'json'
     })
 
+
     .done(function(data) {
       var html = buildHTML(data);
       $('#js-messages').append(html);
+      $(".chat__messages").scrollTop($(".chat__messages")[0].scrollHeight);
       textField.val('');
     })
 

@@ -1,5 +1,5 @@
 - @groups.each do |group|
-  = link_to group_messages_path(group), class: "link-btn" do
+  = link_to group_messages_path(group), class: "link-btn", id: "js-group-btn" do
     .chat__list
       %h3.chat__room__name
         = group.name
