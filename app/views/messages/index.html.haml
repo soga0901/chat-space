@@ -23,7 +23,8 @@
           - @group.users.each do |user|
             = user.name
       .chat__messages
-        = render partial: "message"
+        %ul#js-messages
+          = render partial: "message"
       .chat__input
         = form_for( [ @group, @message], class: "message-form", remote: true ) do |f|
           = f.text_field :body, placeholder: "type a text", autofocus: true, class: "chat__input__area"

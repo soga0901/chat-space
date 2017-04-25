@@ -1,6 +1,13 @@
 $(function() {
   function buildHTML(data) {
-    var html = $('<p class="message__text">').append(data.message.body);
+    var user_name = $('<h3 class="message__user__name">').append(data.message.user_name);
+
+
+    var time = $('<h4 class="message__date">').append(data.message.time);
+
+
+    var body = $('<p class="message__text">').append(data.message.body);
+    var html = $('<li id="js-message">').append(user_name, time, body);
     return html;
   }
 
@@ -24,7 +31,7 @@ $(function() {
 
     .done(function(data) {
       var html = buildHTML(data);
-      $('.chat__messages').append(html);
+      $('#js-messages').append(html);
       textField.val('');
     })
 
@@ -33,3 +40,4 @@ $(function() {
     });
   });
 });
+
