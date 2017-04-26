@@ -1,8 +1,8 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_current_user_groups, only: [:index]
 
   def index
-    @groups = current_user.groups
   end
 
   def new
