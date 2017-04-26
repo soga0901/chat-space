@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_current_user_groups, only: [:index]
 
   def index
   end
@@ -33,6 +34,10 @@ class GroupsController < ApplicationController
   end
 
   private
+  def set_current_user_groups
+    @groups = current_user.groups
+  end
+
   def group_params
     params.require(:group).permit(:name, user_ids: [])
   end
