@@ -1,14 +1,16 @@
 $(function() {
 
   function buildHTML(data) {
-    var html = '<li id="js-message">\n<h3 class="message__user__name">' + data.message.user_name + '</h3>\n<h4 class="message__date">' + data.message.time + '</h4>\n<p class="message__text">' + data.message.body + '</p>\n</li>';
+    var html = (`<li id="js-message">
+      <h3 class="message__user__name">${ data.message.user_name }</h3>
+      <h4 class="message__date">${ data.message.time }</h4>
+      <p class="message__text">${ data.message.body }</p>
+      </li>`);
     return html;
-
   }
 
   $('.new_message').on('submit', function(e) {
     e.preventDefault();
-    console.log("aaa");
     var textField = $('.chat__input__area');
     var message = textField.val();
     var url = location.pathname;
