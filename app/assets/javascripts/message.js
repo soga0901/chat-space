@@ -1,10 +1,7 @@
 $(function() {
 
   function buildHTML(data) {
-    var user_name = $('<h3 class="message__user__name">').append(data.message.user_name);
-    var time = $('<h4 class="message__date">').append(data.message.time);
-    var body = $('<p class="message__text">').append(data.message.body);
-    var html = $('<li id="js-message">').append(user_name, time, body);
+    var html = '<li id="js-message">\n<h3 class="message__user__name">' + data.message.user_name + '</h3>\n<h4 class="message__date">' + data.message.time + '</h4>\n<p class="message__text">' + data.message.body + '</p>\n</li>';
     return html;
 
   }
@@ -27,7 +24,6 @@ $(function() {
       },
       dataType: 'json'
     })
-
 
     .done(function(data) {
       var html = buildHTML(data);
