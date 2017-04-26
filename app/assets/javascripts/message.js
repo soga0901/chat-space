@@ -35,12 +35,14 @@ $(function() {
       var html = buildHTML(data);
       $('#js-messages').append(html);
       $(".chat__messages").scrollTop($(".chat__messages")[0].scrollHeight);
+      $(".alert").hide();
+      $("#flash-message").append('<div class="alert alert-info">メッセージの送信が完了しました。</div>');
       textField.val('');
     })
 
     .fail(function() {
-      alert('error');
+      $(".alert").hide();
+      $("#flash-message").append('<div class="alert alert-danger">メッセージを入力してください。</div>');
     });
   });
 });
-
