@@ -1,6 +1,6 @@
 .chat-group-form {
   width: 980px;
-  height: 380px;
+  overflow: auto;
   margin: 60px auto;
   padding: 40px;
   background-color: #fff;
@@ -43,12 +43,14 @@
   .chat-group-form__field {
     margin-top: 30px;
 
+
     .chat-group-form__field--left {
       float: left;
       width: 30%;
       padding-right: 20px;
       padding-left: 20px;
       box-sizing: border-box;
+      margin-bottom: 15px;
     }
 
     .chat-group-form__field--right {
@@ -69,6 +71,7 @@
       line-height: 30px;
       padding: 10px 15px;
       box-sizing: border-box;
+      margin-bottom: 15px;
     }
   }
 
@@ -103,5 +106,6 @@
     color: #fff;
     background-color: #38aef0;
     border: 0;
+    margin-bottom: 20px;
   }
 }

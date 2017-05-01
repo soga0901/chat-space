@@ -40,6 +40,10 @@ html, body {
     }
   }
 
+    .chat__list:hover {
+      opacity: 0.5;
+    }
+
 
     .chat {
       min-height: 100%;
