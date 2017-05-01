@@ -1,12 +1,10 @@
 class UsersController < ApplicationController
 
   def search
-    @users = User.where('name LIKE(?)', "%#{user}%")
+    @users = User.where('name LIKE(?)', "%#{params[:user]}%")
 
     respond_to do |format|
-      format.json { render 'index', handlers: 'jbuilder' }
+      format.json { render 'search', handlers: 'jbuilder' }
     end
-
   end
-
 end
