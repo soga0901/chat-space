@@ -12,10 +12,10 @@ $(function(e) {
     var userId = parent.data('id');
     var userName = parent.data('name');
     memberList.append(`
-      <div class="current-user">
+      <div class="current-user" id="chat-group-user-${userId}">
       <input type="hidden" name="group[user_ids][]" value="${userId}">
       <p>${userName}
-      <button type="button"class="chat-group-user__btn chat-group-user__btn--remove">削除</button></p></div>
+      <button type="button"class="chat-group-user__btn chat-group-user__btn--remove" data-id="${userId}">削除</button></p></div>
       `)
     $(parent).remove();
   }
@@ -61,13 +61,10 @@ $(function(e) {
 
 
   $(".current-users").on("click", ".chat-group-user__btn--remove", function() {
-    var parent = $(this).parent('.current-user')
-    $(parent).remove();
+    var id = $(this).data('id');
+    console.log(id);
+    var parent = $(this).parents(".current-user");
+    parent.remove();
   });
-
-
-
-
-
 });
 

@@ -10,15 +10,21 @@
       .chat-group-form__field--left
         = f.label "チャットメンバーを追加", class:"chat-group-form__label"
       .chat-group-form__field--right
-        .chat-group-form__search.clearfix
-        = f.text_field :user_ids, placeholder: "追加したいユーザー名を入力してください", class: "chat-group-form__input", id: "user-search-field"
-      #user-search-result
+        %input{type: "text", placeholder:  "追加したいユーザー名を入力してください", class: "chat-group-form__input", id: "user-search-field"}
+      #user-search-result.chat-group-form__field--right
+        %ul.chat-group-users
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
         = f.label "チャットメンバー", class: "chat-group-form__label"
       .chat-group-form__field--right
-        .chat-group-users
-          %p.chat-group-user
+        .current-users
+          - @users.each do |user|
+            .current-user
+              %input{name: "group[user_ids][]", type: "hidden", value: user.id, class: 'current_user' }
+              .p.current_user
+                = user.name
+                %button{type: "button", value: user.id, class: 'chat-group-user__btn chat-group-user__btn--remove'}
+                  削除
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
       .chat-group-form__field--right
