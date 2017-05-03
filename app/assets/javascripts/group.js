@@ -2,10 +2,9 @@ $(function(e) {
   var list = $(".chat-group-users");
 
   function appendList(user) {
-    var user = $(`<li class="chat-group-user" data-id=${ user.id } data-name=${ user.name }>${ user.name }</li>`).append(`<button type="button"class="chat-group-user__btn chat-group-user__btn--add">追加</button>`);
-    list.append(user);
+    var user_html = $(`<li class="chat-group-user" data-id=${ user.id } data-name=${ user.name }>${ user.name }</li>`).append(`<button type="button"class="chat-group-user__btn chat-group-user__btn--add">追加</button>`);
+    list.append(user_html);
   }
-
 
   function addName(parent) {
     var memberList = $(".current-users");
@@ -20,19 +19,17 @@ $(function(e) {
     $(parent).remove();
   }
 
-
   $("#user-search-field").on("keyup", function() {
     var input = $(this).val();
 
     $.ajax({
       type: 'GET',
-      url: '/users',
+      url: '/users/search',
       data: {
         user: input
       },
       dataType: 'json'
     })
-
     .done(function(data) {
       $(".chat-group-user").remove();
       if (input.length !== 0) {
@@ -44,14 +41,10 @@ $(function(e) {
         list.append(`<li class="chat-group-user">一致するユーザーはいません。</li>`);
       }
     })
-
     .fail(function(data) {
-      $(".alert").hide();
       $("#flash-message").append('<div class="alert alert-danger">検索に失敗しました。</div>');
     });
   });
-
-
 
   $(".chat-group-users").on("click", ".chat-group-user__btn--add", function(e) {
     e.preventDefault();
