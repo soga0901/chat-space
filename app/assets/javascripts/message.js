@@ -5,25 +5,25 @@ $(function() {
       <h3 class="message__user__name">${ data.message.user_name }</h3>
       <h4 class="message__date">${ data.message.time }</h4>
       <p class="message__text">${ data.message.body }</p>
+      <p class="message__image"><img src="${ data.message.image }" alt="title" class="image-404-replace" onerror="this.style.display='none'"/></p>
       </li>`);
     return html;
   }
 
-  $('.new_message').on('submit', function(e) {
+  $('#js-message-form').on('submit', function(e) {
     e.preventDefault();
     var textField = $('.chat__input__area');
     var message = textField.val();
+    var formData = new FormData($('#js-message-form').get(0))
     var url = location.pathname;
 
     $.ajax({
       type: 'POST',
       url: url,
-      data: {
-        message: {
-          body: message
-        }
-      },
-      dataType: 'json'
+      data: formData,
+      dataType: 'json',
+      processData: false,
+      contentType: false
     })
     .done(function(data) {
       var html = buildHTML(data);
@@ -38,4 +38,9 @@ $(function() {
       $("#flash-message").append('<div class="alert alert-danger">メッセージを入力してください。</div>');
     });
   });
+
+  $(".fa-photo").on("click", function() {
+    $("#image-select-btn").click();
+  });
+
 });
