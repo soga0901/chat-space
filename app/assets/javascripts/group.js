@@ -14,7 +14,7 @@ $(function(e) {
       <div class="current-user" id="chat-group-user-${userId}">
       <input type="hidden" name="group[user_ids][]" value="${userId}">
       <p>${userName}
-      <button type="button"class="chat-group-user__btn chat-group-user__btn--remove" data-id="${userId}">削除</button></p></div>
+      <button type="button"class="chat-group-user__btn chat-group-user__btn--remove" data-id="${userId}">☓</button></p></div>
       `)
     $(parent).remove();
   }

@@ -25,7 +25,7 @@
             = f.hidden_field :user_ids, :multiple => true,  :value => user.id
             .p.current_user
               = user.name
-              = button_tag('削除', type: 'button', class: 'chat-group-user__btn chat-group-user__btn--remove', value: user.id)
+              = button_tag('☓', type: 'button', class: 'chat-group-user__btn chat-group-user__btn--remove', value: user.id)
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right
