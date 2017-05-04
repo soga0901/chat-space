@@ -1,0 +1,33 @@
+= form_for @group do |f|
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label "グループ名", class: "chat-group-form__label"
+    .chat-group-form__field--right
+      = f.text_field :name, placeholder: "グループ名を入力してください", class: "chat-group-form__input", id: "chat_group_name"
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label "チャットメンバーを追加", class:"chat-group-form__label"
+    .chat-group-form__field--right
+      %input{type: "text", placeholder:  "追加したいユーザー名を入力してください", class: "chat-group-form__input", id: "user-search-field"}
+    #user-search-result.chat-group-form__field--right
+      %ul.chat-group-users
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label "チャットメンバー", class: "chat-group-form__label"
+    .chat-group-form__field--right
+      .current-users
+        .current-user
+          = f.hidden_field :user_ids, :multiple => true,  :value => current_user.id
+          %p.chat-group-user__name
+            = current_user.name
+        - @group.users.where.not(id: current_user.id).each do |user|
+          .current-user
+            = f.hidden_field :user_ids, :multiple => true,  :value => user.id
+            .p.current_user
+              = user.name
+              %button{type: "button", value: user.id, class: 'chat-group-user__btn chat-group-user__btn--remove'}
+                削除
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+    .chat-group-form__field--right
+      = f.submit "save", class: "chat-group-form__action-btn"

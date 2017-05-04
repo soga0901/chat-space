@@ -55,7 +55,6 @@ $(function(e) {
 
   $(".current-users").on("click", ".chat-group-user__btn--remove", function() {
     var id = $(this).data('id');
-    console.log(id);
     var parent = $(this).parents(".current-user");
     parent.remove();
   });

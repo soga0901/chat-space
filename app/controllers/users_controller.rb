@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @users = User.where('name LIKE(?)', "%#{params[:user]}%").where.not(id: current_user.id)
 
     respond_to do |format|
-      format.json { render 'search', handlers: 'jbuilder' }
+      format.json
     end
   end
 end
