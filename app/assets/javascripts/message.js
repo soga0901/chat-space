@@ -18,7 +18,6 @@ $(function() {
     $.ajax({
       type: 'POST',
       url: url,
-
       data: {
         message: {
           body: message
@@ -26,7 +25,6 @@ $(function() {
       },
       dataType: 'json'
     })
-
     .done(function(data) {
       var html = buildHTML(data);
       $('#js-messages').append(html);
@@ -35,7 +33,6 @@ $(function() {
       $("#flash-message").append('<div class="alert alert-info">メッセージの送信が完了しました。</div>');
       textField.val('');
     })
-
     .fail(function() {
       $(".alert").hide();
       $("#flash-message").append('<div class="alert alert-danger">メッセージを入力してください。</div>');

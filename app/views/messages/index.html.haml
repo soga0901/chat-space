@@ -26,7 +26,7 @@
         %ul#js-messages
           = render partial: "message"
       .chat__input
-        = form_for( [ @group, @message], class: "message-form", remote: true ) do |f|
+        = form_for( [ @group, @message], class: "message-form") do |f|
           = f.text_field :body, placeholder: "type a text", autofocus: true, class: "chat__input__area"
           %i.fa.fa-photo
           = f.submit "Send", class: "chat__input__send__btn"

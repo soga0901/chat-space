@@ -7,6 +7,7 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    @users = set_group_users(@group)
   end
 
   def create
@@ -21,6 +22,7 @@ class GroupsController < ApplicationController
 
   def edit
     @group = Group.find(params[:id])
+    @users = set_group_users(@group)
   end
 
   def update
@@ -36,6 +38,10 @@ class GroupsController < ApplicationController
   private
   def set_current_user_groups
     @groups = current_user.groups
+  end
+
+  def set_group_users(group)
+    @users = group.users.where.not(id: current_user.id)
   end
 
   def group_params
