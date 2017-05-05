@@ -105,6 +105,9 @@ html, body {
             font-size: 14px;
             color: #434A54;
             clear: both;
+            padding-bottom: 5px;
+          }
+          &__image {
             padding-bottom: 40px;
           }
         }
@@ -127,6 +130,10 @@ html, body {
             float: left;
             background-color: #fff;
             padding: 17px 10px;
+            cursor: pointer;
+          }
+          .fa-photo:hover {
+            opacity: 0.5;
           }
           &__send__btn {
             float: right;

@@ -6,3 +6,5 @@
       = message.created_at
     %p.message__text
       = message.body
+    %p.message__image
+      = image_tag message.image.to_s
