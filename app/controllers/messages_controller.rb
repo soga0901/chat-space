@@ -1,8 +1,14 @@
 class MessagesController < ApplicationController
   before_action :set_group, :set_messages, :set_current_user, :authenticate_user!
+
   def index
     @message = Message.new
     @groups = current_user.groups
+    @defferent_messages = @messages.where('id > ?', params[:message_id])
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
