@@ -1,35 +1,35 @@
-%body
-  .container
-    .left-bar
-      .left-bar__user
-        = link_to root_path, class: "link-btn"  do
-          %h2.user__name
-            = current_user.name
-        .setting__btn
-          = link_to new_group_path do
-            %i.fa.fa-pencil-square-o
-          = link_to edit_user_registration_path do
-            %i.fa.fa-gear
-      %ul.chat__lists
-        = render partial: "layouts/group"
-    .chat
-      .chat__heading
-        %h2.chat__heading__name
-          = @group.name
-        .edit__btn
-          = link_to "Edit", edit_group_path(@group),  class: "edit__btn__link"
-        %p.chat__heading__member
-          member:
-          - @group.users.each do |user|
-            = user.name
-          = @last_message_id
-      .chat__messages
-        %ul#js-messages
-          = render partial: "message"
-      .chat__input
-        = form_for( [ @group, @message], html: {class: "message-form", id: "js-message-form"}) do |f|
-          = f.text_field :body, placeholder: "type a text", autofocus: true, class: "chat__input__area"
-          = f.file_field :image, style: "display:none;", id: "image-select-btn"
-          = f.label :aaa do
-            %a.fa.fa-photo
-          = f.submit "Send", class: "chat__input__send__btn"
+= javascript_include_tag 'message'
+.container
+  .left-bar
+    .left-bar__user
+      = link_to root_path, class: "link-btn"  do
+        %h2.user__name
+          = current_user.name
+      .setting__btn
+        = link_to new_group_path do
+          %i.fa.fa-pencil-square-o
+        = link_to edit_user_registration_path do
+          %i.fa.fa-gear
+    %ul.chat__lists
+      = render partial: "layouts/group"
+  .chat
+    .chat__heading
+      %h2.chat__heading__name
+        = @group.name
+      .edit__btn
+        = link_to "Edit", edit_group_path(@group),  class: "edit__btn__link"
+      %p.chat__heading__member
+        member:
+        - @group.users.each do |user|
+          = user.name
+        = @last_message_id
+    .chat__messages
+      %ul#js-messages
+        = render partial: "message"
+    .chat__input
+      = form_for( [ @group, @message], html: {class: "message-form", id: "js-message-form"}) do |f|
+        = f.text_field :body, placeholder: "type a text", autofocus: true, class: "chat__input__area"
+        = f.file_field :image, style: "display:none;", id: "image-select-btn"
+        = f.label :aaa do
+          %a.fa.fa-photo
+        = f.submit "Send", class: "chat__input__send__btn"

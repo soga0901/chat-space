@@ -1,18 +1,6 @@
 $(function() {
 
-// メッセージの非同期送信
-  function buildHTML(data) {
-    var html = (`<li id="js-message" data-id=${ data.message.id }>
-      <h3 class="message__user__name">${ data.message.user_name }</h3>
-      <h4 class="message__date">${ data.message.time }</h4>
-      <p class="message__text">${ data.message.body }</p>
-      <p class="message__image"><img src="${ data.message.image }" alt="title" class="image-404-replace" onerror="this.style.display='none'"/></p>
-      </li>`);
-    return html;
-  }
-
-// 自動更新
-  function buildOthers(message) {
+  function buildHTML(message) {
     var html = (`<li id="js-message" data-id=${ message.id }>
       <h3 class="message__user__name">${ message.user_name }</h3>
       <h4 class="message__date">${ message.time }</h4>
@@ -38,8 +26,7 @@ $(function() {
       contentType: false
     })
     .done(function(data) {
-      var html = buildHTML(data);
-      $('#js-messages').append(html);
+      var html = buildHTML(data.message);
       $(".chat__messages").scrollTop($(".chat__messages")[0].scrollHeight);
       $(".alert").hide();
       $("#flash-message").append('<div class="alert alert-info">メッセージの送信が完了しました。</div>');
@@ -70,20 +57,21 @@ $(function() {
       type: 'GET',
       url: url,
       data: {
-        user_id: lastId
+        message_id: lastId
       },
       dataType: 'json'
     })
     .done(function(data) {
       if (data.messages.length !== 0) {
         $.each(data.messages, function(i, message) {
-          buildOthers(message);
+          buildHTML(message);
         });
         $(".chat__messages").scrollTop($(".chat__messages")[0].scrollHeight);
       }
     })
     .fail(function(message) {
-       $("#flash-message").append('<div class="alert alert-danger">メッセージを読み込めません。</div>');
+      $(".alert").hide();
+       $("#flash-message").append('<div class="alert alert-danger">メッセージを更新できません。</div>');
     });
   }
   setInterval(AutomaticUpdating, 1000);
