@@ -1,11 +1,11 @@
 class MessagesController < ApplicationController
   before_action :set_group, :set_messages, :set_current_user, :authenticate_user!
+  before_action :check_messages, only: [:index]
 
   def index
     @message = Message.new
     @groups = current_user.groups
-    deference = @messages.last().id - params[:message_id].to_i if @messages
-    @defferent_messages = @messages.last(deference)
+
     respond_to do |format|
       format.html
       format.json
@@ -41,6 +41,13 @@ class MessagesController < ApplicationController
 
   def set_current_user
     @user = current_user
+  end
+
+  def check_messages
+    if @messages.length != 0
+      deference = @messages.last().id - params[:message_id].to_i
+      @defferent_messages = @messages.last(deference)
+    end
   end
 
 end

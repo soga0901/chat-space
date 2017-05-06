@@ -62,6 +62,7 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
+      $(".alert").hide();
       if (data.messages.length !== 0) {
         $.each(data.messages, function(i, message) {
           buildHTML(message);
