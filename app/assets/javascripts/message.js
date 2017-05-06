@@ -31,11 +31,12 @@ $(function() {
       $(".alert").hide();
       $("#flash-message").append('<div class="alert alert-info">メッセージの送信が完了しました。</div>');
       textField.val('');
-      $(".chat__input__send__btn").prop('disabled', false);
     })
     .fail(function() {
       $(".alert").hide();
       $("#flash-message").append('<div class="alert alert-danger">メッセージを入力してください。</div>');
+    })
+    .always(function() {
       $(".chat__input__send__btn").prop('disabled', false);
     });
   });
