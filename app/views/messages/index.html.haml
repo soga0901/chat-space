@@ -22,6 +22,7 @@
           member:
           - @group.users.each do |user|
             = user.name
+          = @last_message_id
       .chat__messages
         %ul#js-messages
           = render partial: "message"
