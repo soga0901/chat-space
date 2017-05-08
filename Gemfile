@@ -16,6 +16,10 @@ gem 'carrierwave'
 gem 'fog'
 gem 'dotenv-rails'
 
+group :production do
+  gem 'unicorn'
+end
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
